@@ -1,0 +1,12 @@
+{
+  "n_train": 1323,
+  "n_test": 441,
+  "accuracy_cooler": 0.9977324263038548,
+  "macro_f1_cooler": 0.9978108188614104,
+  "accuracy_valve": 0.9614512471655329,
+  "macro_f1_valve": 0.9482453509679613,
+  "accuracy_pump_leak": 0.9977324263038548,
+  "macro_f1_pump_leak": 0.9966813704954123,
+  "accuracy_accumulator": 0.9954648526077098,
+  "macro_f1_accumulator": 0.9934570646595963
+}

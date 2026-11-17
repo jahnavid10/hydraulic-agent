@@ -8,3 +8,5 @@ artifacts/
 reports/*.png
 .pytest_cache/
 outbox/
+mlflow.db
+mlruns/

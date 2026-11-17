@@ -13,6 +13,7 @@ import pandas as pd
 from sklearn.metrics import roc_auc_score, roc_curve
 
 from src.config import ART_DIR, COMPONENTS, REPORT_DIR
+from src.tracking import log_run
 
 
 def compute_metrics(scores: pd.DataFrame, threshold: float) -> dict:
@@ -80,6 +81,13 @@ def plot_roc(scores: pd.DataFrame, path) -> None:
     plt.close(fig)
 
 
+def _flat(m: dict) -> dict:
+    out = {k: v for k, v in m.items() if isinstance(v, (int, float))}
+    for c, d in m["recall_by_faulty_component"].items():
+        out[f"recall_{c}"] = d["recall"]
+    return out
+
+
 def run(scores_path=ART_DIR / "scores.csv", threshold_path=ART_DIR / "threshold.json") -> dict:
     scores = pd.read_csv(scores_path, index_col="cycle_id")
     threshold = json.loads(open(threshold_path).read())["threshold"]
@@ -89,6 +97,9 @@ def run(scores_path=ART_DIR / "scores.csv", threshold_path=ART_DIR / "threshold.
     plot_score_histogram(scores, threshold, REPORT_DIR / "score_histogram.png")
     if "roc_auc" in metrics:
         plot_roc(scores, REPORT_DIR / "roc_curve.png")
+    log_run("evaluate", params={"threshold": threshold}, metrics=_flat(metrics),
+            artifacts=[REPORT_DIR / "day1_metrics.json", REPORT_DIR / "score_histogram.png",
+                       REPORT_DIR / "roc_curve.png"])
     return metrics
 
 

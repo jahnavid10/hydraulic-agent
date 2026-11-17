@@ -28,6 +28,7 @@ from torch.utils.data import DataLoader, TensorDataset
 
 from src.config import ART_DIR, PROC_DIR, REPORT_DIR, SEED
 from src.model import Autoencoder, per_feature_errors
+from src.tracking import log_run
 
 
 def set_seed(seed: int) -> None:
@@ -142,6 +143,11 @@ def main() -> None:
     fig.savefig(REPORT_DIR / "training_curve.png", dpi=150)
     plt.close(fig)
 
+    log_run("train_ae", params=vars(args),
+        metrics={"threshold": threshold, "best_val_loss": best_val,
+                "n_train_healthy": int(train_mask.sum())},
+        artifacts=[REPORT_DIR / "training_curve.png"], history=history)
+    
     print(f"\nthreshold = {threshold:.4f}  ({args.percentile}th percentile of healthy val errors)")
     print(f"saved model, scaler, threshold, scores to {ART_DIR}")
     print("next: python -m src.evaluate")
