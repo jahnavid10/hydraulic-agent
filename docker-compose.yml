@@ -6,7 +6,7 @@ services:
       - "8000:8000"
     volumes:
       - ./artifacts:/app/artifacts:ro          # trained models
-      - ./data/processed:/app/data/processed:ro  # feature table
+      - ./data/processed:/app/data/processed:ro  # feature table and splits
       - ./outbox:/app/outbox                   # work orders persist on your machine
     healthcheck:
       test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
@@ -14,4 +14,20 @@ services:
       timeout: 5s
       start_period: 40s
       retries: 3
+    restart: unless-stopped
+
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile.dashboard
+    image: hydraulic-dashboard:latest
+    ports:
+      - "8501:8501"
+    environment:
+      API_URL: http://api:8000                 # service name resolves inside the compose network
+    depends_on:
+      api:
+        condition: service_healthy
+      env_file:
+      - .env
     restart: unless-stopped

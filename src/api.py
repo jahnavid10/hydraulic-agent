@@ -11,7 +11,7 @@ from fastapi import FastAPI, HTTPException, Query, Request
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 
-from src import tools, workorders
+from src import monitoring, tools, workorders
 from src.config import ART_DIR, PROC_DIR
 
 VERSION = "0.1.0"
@@ -55,9 +55,11 @@ class DiagnoseResponse(BaseModel):
 
 class TriageResponse(BaseModel):
     cycle_id: int
+    alert: bool
+    alert_source: str  # "none", "detector", "classifier" or "both"
     anomaly: ScoreResponse
     top_sensors: list[SensorShare] = []
-    diagnosis: DiagnoseResponse | None = None
+    diagnosis: DiagnoseResponse
     recommendation: str
 
 
@@ -71,6 +73,37 @@ class WorkOrder(BaseModel):
     status: str
     created_at: str
     decided_at: str | None = None
+
+
+class ScorePoint(BaseModel):
+    cycle_id: int
+    score: float
+    ratio: float
+
+
+class ScoresResponse(BaseModel):
+    threshold: float
+    points: list[ScorePoint]
+
+
+class DriftSensor(BaseModel):
+    sensor: str
+    meaning: str
+    psi: float
+    status: str
+
+
+class DriftResponse(BaseModel):
+    reference: str
+    window: dict[str, int]
+    sensors: list[DriftSensor]
+
+
+class DraftRequest(BaseModel):
+    cycle_id: int
+    component: str
+    severity: str
+    evidence: str
 
 
 # ---------- tiny in-memory request metrics (read by the monitoring dashboard) ----------
@@ -162,29 +195,90 @@ def diagnose(cycle_id: int):
 
 @app.get("/cycles/{cycle_id}/triage", response_model=TriageResponse, tags=["model"])
 def triage(cycle_id: int):
-    """Fixed, rule-based pipeline (no LLM): score, then explain and diagnose if anomalous.
+    """Fixed, rule-based pipeline (no LLM): score AND diagnose every cycle.
 
-    Doubles as the baseline the LLM agent is compared against in the evaluation.
+    An alert is raised when the anomaly detector flags the cycle OR the classifier reports a
+    severe component; `alert_source` says which. The classifier catches some faults the
+    detector misses (for example subtle pump leakage). Sensor explanations are added only
+    when there is an alert. Doubles as the baseline the LLM agent is compared against.
     """
     s = _unwrap(tools.score_cycle(cycle_id))
-    if not s["is_anomaly"]:
-        return {"cycle_id": s["cycle_id"], "anomaly": s,
-                "recommendation": "No severe fault detected. No action needed."}
-    ex = _unwrap(tools.explain_anomaly(cycle_id))
     dg = _unwrap(tools.diagnose_component(cycle_id))
-    if dg["severe_components"]:
-        rec = ("Severe degradation suspected in: " + ", ".join(dg["severe_components"])
+    severe = dg["severe_components"]
+    by_detector, by_classifier = bool(s["is_anomaly"]), bool(severe)
+
+    if not (by_detector or by_classifier):
+        return {"cycle_id": s["cycle_id"], "alert": False, "alert_source": "none",
+                "anomaly": s, "diagnosis": dg,
+                "recommendation": "No severe fault detected. No action needed."}
+
+    source = "both" if (by_detector and by_classifier) else ("detector" if by_detector else "classifier")
+    ex = _unwrap(tools.explain_anomaly(cycle_id))
+    if severe:
+        rec = ("Severe degradation suspected in: " + ", ".join(severe)
                + ". Review the evidence and draft a work order.")
+        if source == "classifier":
+            rec += " Flagged by the classifier only; the anomaly score is below its threshold."
     else:
         rec = "Anomalous score but no component classified as severe. Inspect manually."
-    return {"cycle_id": s["cycle_id"], "anomaly": s, "top_sensors": ex["top_sensors"],
-            "diagnosis": dg, "recommendation": rec}
+    return {"cycle_id": s["cycle_id"], "alert": True, "alert_source": source, "anomaly": s,
+            "top_sensors": ex["top_sensors"], "diagnosis": dg, "recommendation": rec}
+
+
+# ---------- monitoring ----------
+def _monitoring_call(fn, *args):
+    try:
+        return fn(*args)
+    except ValueError as exc:
+        raise HTTPException(status_code=422, detail=str(exc))
+    except FileNotFoundError as exc:
+        raise HTTPException(status_code=503, detail=f"model files not available: {exc}")
+
+
+@app.get("/monitoring/scores", response_model=ScoresResponse, tags=["monitoring"])
+def monitoring_scores(start: int = Query(0, ge=0), end: int = Query(2205, ge=1)):
+    return _monitoring_call(monitoring.score_range, start, end)
+
+
+class AgentRequest(BaseModel):
+    cycle_id: int
+
+
+def _run_agent(cycle_id: int) -> dict:
+    """Imported lazily so the rest of the API works without google-adk or an API key."""
+    from src.agent import run_agent
+    return run_agent(cycle_id)
+
+
+@app.post("/agent/diagnose", tags=["agent"])
+def agent_diagnose(req: AgentRequest):
+    """LLM agent triage for one cycle. It may DRAFT work orders; approval stays with /workorders/{id}/approve."""
+    if not 0 <= req.cycle_id <= 2204:
+        raise HTTPException(status_code=422, detail="cycle_id must be 0..2204")
+    try:
+        out = _run_agent(req.cycle_id)
+    except ImportError:
+        raise HTTPException(status_code=503, detail="agent dependencies (google-adk) not installed")
+    if out.get("error"):
+        raise HTTPException(status_code=502, detail=out["error"])
+    from src.agent_utils import normalize_result, parse_result
+    return {**out, "result": normalize_result(parse_result(out["final_text"]))}
+
+
+@app.get("/monitoring/drift", response_model=DriftResponse, tags=["monitoring"])
+def monitoring_drift(start: int = Query(0, ge=0), end: int = Query(2205, ge=1)):
+    return _monitoring_call(monitoring.drift_report, start, end)
 
 
 # ---------- work orders (human approval gate) ----------
 @app.get("/workorders", response_model=list[WorkOrder], tags=["workorders"])
 def list_workorders(status: str | None = Query(None, pattern="^(DRAFT|APPROVED|REJECTED)$")):
     return workorders.list_orders(status)
+
+@app.post("/workorders", response_model=WorkOrder, status_code=201, tags=["workorders"])
+def create_workorder(req: DraftRequest):
+    """Create a DRAFT (never filed). Same validation as the agent's draft tool."""
+    return _unwrap(tools.draft_work_order(req.cycle_id, req.component, req.severity, req.evidence))
 
 
 def _decide(order_id: str, status: str) -> dict:

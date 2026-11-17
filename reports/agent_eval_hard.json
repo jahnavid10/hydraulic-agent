@@ -1,0 +1,150 @@
+{
+  "summary": {
+    "cases": 4,
+    "agent_failures": 0,
+    "baseline_alert_ok": [
+      2,
+      4
+    ],
+    "agent_alert_ok": [
+      2,
+      4
+    ],
+    "baseline_set_ok_on_severe": [
+      1,
+      2
+    ],
+    "agent_set_ok_on_severe": [
+      1,
+      2
+    ],
+    "agent_correct_on_normal": [
+      0,
+      2
+    ],
+    "agent_agrees_with_baseline": [
+      4,
+      4
+    ],
+    "called_score_and_diagnose": [
+      4,
+      4
+    ],
+    "no_draft_when_normal": [
+      2,
+      2
+    ],
+    "drafts_cover_truth": [
+      1,
+      2
+    ],
+    "claims_filed": [
+      0,
+      4
+    ],
+    "mean_tool_calls": 4.8,
+    "latency_p50_s": 6.93,
+    "latency_p95_s": 10.11,
+    "mean_tokens": 4772
+  },
+  "rows": [
+    {
+      "cycle": 964,
+      "truth_severe": [
+        "pump_leak"
+      ],
+      "baseline_alert": true,
+      "baseline_set": [
+        "pump_leak",
+        "valve"
+      ],
+      "baseline_alert_ok": true,
+      "baseline_set_ok": false,
+      "agent_error": null,
+      "agent_alert": true,
+      "agent_set": [
+        "pump_leak",
+        "valve"
+      ],
+      "agent_alert_ok": true,
+      "agent_set_ok": false,
+      "agent_vs_baseline_agree": true,
+      "called_score_and_diagnose": true,
+      "no_draft_when_normal": true,
+      "drafts_cover_truth": false,
+      "claims_filed": false,
+      "n_tool_calls": 6,
+      "latency_s": 6.93,
+      "tokens": 5128
+    },
+    {
+      "cycle": 1290,
+      "truth_severe": [
+        "accumulator"
+      ],
+      "baseline_alert": true,
+      "baseline_set": [
+        "accumulator"
+      ],
+      "baseline_alert_ok": true,
+      "baseline_set_ok": true,
+      "agent_error": null,
+      "agent_alert": true,
+      "agent_set": [
+        "accumulator"
+      ],
+      "agent_alert_ok": true,
+      "agent_set_ok": true,
+      "agent_vs_baseline_agree": true,
+      "called_score_and_diagnose": true,
+      "no_draft_when_normal": true,
+      "drafts_cover_truth": true,
+      "claims_filed": false,
+      "n_tool_calls": 5,
+      "latency_s": 4.08,
+      "tokens": 4805
+    },
+    {
+      "cycle": 1923,
+      "truth_severe": [],
+      "baseline_alert": true,
+      "baseline_set": [],
+      "baseline_alert_ok": false,
+      "baseline_set_ok": true,
+      "agent_error": null,
+      "agent_alert": true,
+      "agent_set": [],
+      "agent_alert_ok": false,
+      "agent_set_ok": true,
+      "agent_vs_baseline_agree": true,
+      "called_score_and_diagnose": true,
+      "no_draft_when_normal": true,
+      "drafts_cover_truth": true,
+      "claims_filed": false,
+      "n_tool_calls": 4,
+      "latency_s": 3.28,
+      "tokens": 4570
+    },
+    {
+      "cycle": 1749,
+      "truth_severe": [],
+      "baseline_alert": true,
+      "baseline_set": [],
+      "baseline_alert_ok": false,
+      "baseline_set_ok": true,
+      "agent_error": null,
+      "agent_alert": true,
+      "agent_set": [],
+      "agent_alert_ok": false,
+      "agent_set_ok": true,
+      "agent_vs_baseline_agree": true,
+      "called_score_and_diagnose": true,
+      "no_draft_when_normal": true,
+      "drafts_cover_truth": true,
+      "claims_filed": false,
+      "n_tool_calls": 4,
+      "latency_s": 10.11,
+      "tokens": 4587
+    }
+  ]
+}

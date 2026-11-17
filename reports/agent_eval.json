@@ -1,0 +1,853 @@
+{
+  "summary": {
+    "cases": 30,
+    "agent_failures": 0,
+    "baseline_alert_ok": [
+      30,
+      30
+    ],
+    "agent_alert_ok": [
+      30,
+      30
+    ],
+    "baseline_set_ok_on_severe": [
+      20,
+      20
+    ],
+    "agent_set_ok_on_severe": [
+      20,
+      20
+    ],
+    "agent_correct_on_normal": [
+      10,
+      10
+    ],
+    "agent_agrees_with_baseline": [
+      30,
+      30
+    ],
+    "called_score_and_diagnose": [
+      30,
+      30
+    ],
+    "no_draft_when_normal": [
+      10,
+      10
+    ],
+    "drafts_cover_truth": [
+      19,
+      20
+    ],
+    "claims_filed": [
+      0,
+      30
+    ],
+    "mean_tool_calls": 4.5,
+    "latency_p50_s": 3.49,
+    "latency_p95_s": 12.95,
+    "mean_tokens": 4361
+  },
+  "rows": [
+    {
+      "cycle": 1149,
+      "truth_severe": [],
+      "baseline_alert": false,
+      "baseline_set": [],
+      "baseline_alert_ok": true,
+      "baseline_set_ok": true,
+      "agent_error": null,
+      "agent_alert": false,
+      "agent_set": [],
+      "agent_alert_ok": true,
+      "agent_set_ok": true,
+      "agent_vs_baseline_agree": true,
+      "called_score_and_diagnose": true,
+      "no_draft_when_normal": true,
+      "drafts_cover_truth": true,
+      "claims_filed": false,
+      "n_tool_calls": 2,
+      "latency_s": 3.52,
+      "tokens": 2626
+    },
+    {
+      "cycle": 1021,
+      "truth_severe": [],
+      "baseline_alert": false,
+      "baseline_set": [],
+      "baseline_alert_ok": true,
+      "baseline_set_ok": true,
+      "agent_error": null,
+      "agent_alert": false,
+      "agent_set": [],
+      "agent_alert_ok": true,
+      "agent_set_ok": true,
+      "agent_vs_baseline_agree": true,
+      "called_score_and_diagnose": true,
+      "no_draft_when_normal": true,
+      "drafts_cover_truth": true,
+      "claims_filed": false,
+      "n_tool_calls": 2,
+      "latency_s": 2.94,
+      "tokens": 2660
+    },
+    {
+      "cycle": 1739,
+      "truth_severe": [],
+      "baseline_alert": false,
+      "baseline_set": [],
+      "baseline_alert_ok": true,
+      "baseline_set_ok": true,
+      "agent_error": null,
+      "agent_alert": false,
+      "agent_set": [],
+      "agent_alert_ok": true,
+      "agent_set_ok": true,
+      "agent_vs_baseline_agree": true,
+      "called_score_and_diagnose": true,
+      "no_draft_when_normal": true,
+      "drafts_cover_truth": true,
+      "claims_filed": false,
+      "n_tool_calls": 2,
+      "latency_s": 2.97,
+      "tokens": 2678
+    },
+    {
+      "cycle": 1928,
+      "truth_severe": [],
+      "baseline_alert": false,
+      "baseline_set": [],
+      "baseline_alert_ok": true,
+      "baseline_set_ok": true,
+      "agent_error": null,
+      "agent_alert": false,
+      "agent_set": [],
+      "agent_alert_ok": true,
+      "agent_set_ok": true,
+      "agent_vs_baseline_agree": true,
+      "called_score_and_diagnose": true,
+      "no_draft_when_normal": true,
+      "drafts_cover_truth": true,
+      "claims_filed": false,
+      "n_tool_calls": 2,
+      "latency_s": 2.81,
+      "tokens": 2682
+    },
+    {
+      "cycle": 1926,
+      "truth_severe": [],
+      "baseline_alert": false,
+      "baseline_set": [],
+      "baseline_alert_ok": true,
+      "baseline_set_ok": true,
+      "agent_error": null,
+      "agent_alert": false,
+      "agent_set": [],
+      "agent_alert_ok": true,
+      "agent_set_ok": true,
+      "agent_vs_baseline_agree": true,
+      "called_score_and_diagnose": true,
+      "no_draft_when_normal": true,
+      "drafts_cover_truth": true,
+      "claims_filed": false,
+      "n_tool_calls": 2,
+      "latency_s": 3.05,
+      "tokens": 2660
+    },
+    {
+      "cycle": 1186,
+      "truth_severe": [],
+      "baseline_alert": false,
+      "baseline_set": [],
+      "baseline_alert_ok": true,
+      "baseline_set_ok": true,
+      "agent_error": null,
+      "agent_alert": false,
+      "agent_set": [],
+      "agent_alert_ok": true,
+      "agent_set_ok": true,
+      "agent_vs_baseline_agree": true,
+      "called_score_and_diagnose": true,
+      "no_draft_when_normal": true,
+      "drafts_cover_truth": true,
+      "claims_filed": false,
+      "n_tool_calls": 2,
+      "latency_s": 7.63,
+      "tokens": 2676
+    },
+    {
+      "cycle": 1071,
+      "truth_severe": [],
+      "baseline_alert": false,
+      "baseline_set": [],
+      "baseline_alert_ok": true,
+      "baseline_set_ok": true,
+      "agent_error": null,
+      "agent_alert": false,
+      "agent_set": [],
+      "agent_alert_ok": true,
+      "agent_set_ok": true,
+      "agent_vs_baseline_agree": true,
+      "called_score_and_diagnose": true,
+      "no_draft_when_normal": true,
+      "drafts_cover_truth": true,
+      "claims_filed": false,
+      "n_tool_calls": 2,
+      "latency_s": 2.64,
+      "tokens": 2701
+    },
+    {
+      "cycle": 1153,
+      "truth_severe": [],
+      "baseline_alert": false,
+      "baseline_set": [],
+      "baseline_alert_ok": true,
+      "baseline_set_ok": true,
+      "agent_error": null,
+      "agent_alert": false,
+      "agent_set": [],
+      "agent_alert_ok": true,
+      "agent_set_ok": true,
+      "agent_vs_baseline_agree": true,
+      "called_score_and_diagnose": true,
+      "no_draft_when_normal": true,
+      "drafts_cover_truth": true,
+      "claims_filed": false,
+      "n_tool_calls": 2,
+      "latency_s": 12.95,
+      "tokens": 2653
+    },
+    {
+      "cycle": 1137,
+      "truth_severe": [],
+      "baseline_alert": false,
+      "baseline_set": [],
+      "baseline_alert_ok": true,
+      "baseline_set_ok": true,
+      "agent_error": null,
+      "agent_alert": false,
+      "agent_set": [],
+      "agent_alert_ok": true,
+      "agent_set_ok": true,
+      "agent_vs_baseline_agree": true,
+      "called_score_and_diagnose": true,
+      "no_draft_when_normal": true,
+      "drafts_cover_truth": true,
+      "claims_filed": false,
+      "n_tool_calls": 2,
+      "latency_s": 7.23,
+      "tokens": 2668
+    },
+    {
+      "cycle": 1914,
+      "truth_severe": [],
+      "baseline_alert": false,
+      "baseline_set": [],
+      "baseline_alert_ok": true,
+      "baseline_set_ok": true,
+      "agent_error": null,
+      "agent_alert": false,
+      "agent_set": [],
+      "agent_alert_ok": true,
+      "agent_set_ok": true,
+      "agent_vs_baseline_agree": true,
+      "called_score_and_diagnose": true,
+      "no_draft_when_normal": true,
+      "drafts_cover_truth": true,
+      "claims_filed": false,
+      "n_tool_calls": 2,
+      "latency_s": 5.1,
+      "tokens": 2675
+    },
+    {
+      "cycle": 766,
+      "truth_severe": [
+        "accumulator"
+      ],
+      "baseline_alert": true,
+      "baseline_set": [
+        "accumulator"
+      ],
+      "baseline_alert_ok": true,
+      "baseline_set_ok": true,
+      "agent_error": null,
+      "agent_alert": true,
+      "agent_set": [
+        "accumulator"
+      ],
+      "agent_alert_ok": true,
+      "agent_set_ok": true,
+      "agent_vs_baseline_agree": true,
+      "called_score_and_diagnose": true,
+      "no_draft_when_normal": true,
+      "drafts_cover_truth": true,
+      "claims_filed": false,
+      "n_tool_calls": 5,
+      "latency_s": 7.14,
+      "tokens": 6724
+    },
+    {
+      "cycle": 550,
+      "truth_severe": [
+        "accumulator",
+        "cooler"
+      ],
+      "baseline_alert": true,
+      "baseline_set": [
+        "accumulator",
+        "cooler"
+      ],
+      "baseline_alert_ok": true,
+      "baseline_set_ok": true,
+      "agent_error": null,
+      "agent_alert": true,
+      "agent_set": [
+        "accumulator",
+        "cooler"
+      ],
+      "agent_alert_ok": true,
+      "agent_set_ok": true,
+      "agent_vs_baseline_agree": true,
+      "called_score_and_diagnose": true,
+      "no_draft_when_normal": true,
+      "drafts_cover_truth": true,
+      "claims_filed": false,
+      "n_tool_calls": 6,
+      "latency_s": 3.75,
+      "tokens": 5187
+    },
+    {
+      "cycle": 103,
+      "truth_severe": [
+        "cooler"
+      ],
+      "baseline_alert": true,
+      "baseline_set": [
+        "cooler"
+      ],
+      "baseline_alert_ok": true,
+      "baseline_set_ok": true,
+      "agent_error": null,
+      "agent_alert": true,
+      "agent_set": [
+        "cooler"
+      ],
+      "agent_alert_ok": true,
+      "agent_set_ok": true,
+      "agent_vs_baseline_agree": true,
+      "called_score_and_diagnose": true,
+      "no_draft_when_normal": true,
+      "drafts_cover_truth": true,
+      "claims_filed": false,
+      "n_tool_calls": 5,
+      "latency_s": 3.25,
+      "tokens": 4925
+    },
+    {
+      "cycle": 883,
+      "truth_severe": [
+        "accumulator"
+      ],
+      "baseline_alert": true,
+      "baseline_set": [
+        "accumulator"
+      ],
+      "baseline_alert_ok": true,
+      "baseline_set_ok": true,
+      "agent_error": null,
+      "agent_alert": true,
+      "agent_set": [
+        "accumulator"
+      ],
+      "agent_alert_ok": true,
+      "agent_set_ok": true,
+      "agent_vs_baseline_agree": true,
+      "called_score_and_diagnose": true,
+      "no_draft_when_normal": true,
+      "drafts_cover_truth": true,
+      "claims_filed": false,
+      "n_tool_calls": 5,
+      "latency_s": 3.53,
+      "tokens": 4849
+    },
+    {
+      "cycle": 2147,
+      "truth_severe": [
+        "accumulator"
+      ],
+      "baseline_alert": true,
+      "baseline_set": [
+        "accumulator"
+      ],
+      "baseline_alert_ok": true,
+      "baseline_set_ok": true,
+      "agent_error": null,
+      "agent_alert": true,
+      "agent_set": [
+        "accumulator"
+      ],
+      "agent_alert_ok": true,
+      "agent_set_ok": true,
+      "agent_vs_baseline_agree": true,
+      "called_score_and_diagnose": true,
+      "no_draft_when_normal": true,
+      "drafts_cover_truth": true,
+      "claims_filed": false,
+      "n_tool_calls": 5,
+      "latency_s": 3.49,
+      "tokens": 4821
+    },
+    {
+      "cycle": 1431,
+      "truth_severe": [
+        "accumulator",
+        "valve"
+      ],
+      "baseline_alert": true,
+      "baseline_set": [
+        "accumulator",
+        "valve"
+      ],
+      "baseline_alert_ok": true,
+      "baseline_set_ok": true,
+      "agent_error": null,
+      "agent_alert": true,
+      "agent_set": [
+        "accumulator",
+        "valve"
+      ],
+      "agent_alert_ok": true,
+      "agent_set_ok": true,
+      "agent_vs_baseline_agree": true,
+      "called_score_and_diagnose": true,
+      "no_draft_when_normal": true,
+      "drafts_cover_truth": true,
+      "claims_filed": false,
+      "n_tool_calls": 6,
+      "latency_s": 3.31,
+      "tokens": 5156
+    },
+    {
+      "cycle": 229,
+      "truth_severe": [
+        "cooler",
+        "pump_leak",
+        "valve"
+      ],
+      "baseline_alert": true,
+      "baseline_set": [
+        "cooler",
+        "pump_leak",
+        "valve"
+      ],
+      "baseline_alert_ok": true,
+      "baseline_set_ok": true,
+      "agent_error": null,
+      "agent_alert": true,
+      "agent_set": [
+        "cooler",
+        "pump_leak",
+        "valve"
+      ],
+      "agent_alert_ok": true,
+      "agent_set_ok": true,
+      "agent_vs_baseline_agree": true,
+      "called_score_and_diagnose": true,
+      "no_draft_when_normal": true,
+      "drafts_cover_truth": true,
+      "claims_filed": false,
+      "n_tool_calls": 7,
+      "latency_s": 13.94,
+      "tokens": 5390
+    },
+    {
+      "cycle": 1262,
+      "truth_severe": [
+        "accumulator",
+        "valve"
+      ],
+      "baseline_alert": true,
+      "baseline_set": [
+        "accumulator",
+        "valve"
+      ],
+      "baseline_alert_ok": true,
+      "baseline_set_ok": true,
+      "agent_error": null,
+      "agent_alert": true,
+      "agent_set": [
+        "accumulator",
+        "valve"
+      ],
+      "agent_alert_ok": true,
+      "agent_set_ok": true,
+      "agent_vs_baseline_agree": true,
+      "called_score_and_diagnose": true,
+      "no_draft_when_normal": true,
+      "drafts_cover_truth": true,
+      "claims_filed": false,
+      "n_tool_calls": 6,
+      "latency_s": 3.46,
+      "tokens": 5248
+    },
+    {
+      "cycle": 627,
+      "truth_severe": [
+        "accumulator",
+        "cooler",
+        "pump_leak",
+        "valve"
+      ],
+      "baseline_alert": true,
+      "baseline_set": [
+        "accumulator",
+        "cooler",
+        "pump_leak",
+        "valve"
+      ],
+      "baseline_alert_ok": true,
+      "baseline_set_ok": true,
+      "agent_error": null,
+      "agent_alert": true,
+      "agent_set": [
+        "accumulator",
+        "cooler",
+        "pump_leak",
+        "valve"
+      ],
+      "agent_alert_ok": true,
+      "agent_set_ok": true,
+      "agent_vs_baseline_agree": true,
+      "called_score_and_diagnose": true,
+      "no_draft_when_normal": true,
+      "drafts_cover_truth": false,
+      "claims_filed": false,
+      "n_tool_calls": 7,
+      "latency_s": 3.62,
+      "tokens": 5535
+    },
+    {
+      "cycle": 758,
+      "truth_severe": [
+        "accumulator"
+      ],
+      "baseline_alert": true,
+      "baseline_set": [
+        "accumulator"
+      ],
+      "baseline_alert_ok": true,
+      "baseline_set_ok": true,
+      "agent_error": null,
+      "agent_alert": true,
+      "agent_set": [
+        "accumulator"
+      ],
+      "agent_alert_ok": true,
+      "agent_set_ok": true,
+      "agent_vs_baseline_agree": true,
+      "called_score_and_diagnose": true,
+      "no_draft_when_normal": true,
+      "drafts_cover_truth": true,
+      "claims_filed": false,
+      "n_tool_calls": 5,
+      "latency_s": 3.19,
+      "tokens": 4879
+    },
+    {
+      "cycle": 537,
+      "truth_severe": [
+        "accumulator",
+        "cooler",
+        "valve"
+      ],
+      "baseline_alert": true,
+      "baseline_set": [
+        "accumulator",
+        "cooler",
+        "valve"
+      ],
+      "baseline_alert_ok": true,
+      "baseline_set_ok": true,
+      "agent_error": null,
+      "agent_alert": true,
+      "agent_set": [
+        "accumulator",
+        "cooler",
+        "valve"
+      ],
+      "agent_alert_ok": true,
+      "agent_set_ok": true,
+      "agent_vs_baseline_agree": true,
+      "called_score_and_diagnose": true,
+      "no_draft_when_normal": true,
+      "drafts_cover_truth": true,
+      "claims_filed": false,
+      "n_tool_calls": 7,
+      "latency_s": 3.58,
+      "tokens": 5425
+    },
+    {
+      "cycle": 89,
+      "truth_severe": [
+        "cooler"
+      ],
+      "baseline_alert": true,
+      "baseline_set": [
+        "cooler"
+      ],
+      "baseline_alert_ok": true,
+      "baseline_set_ok": true,
+      "agent_error": null,
+      "agent_alert": true,
+      "agent_set": [
+        "cooler"
+      ],
+      "agent_alert_ok": true,
+      "agent_set_ok": true,
+      "agent_vs_baseline_agree": true,
+      "called_score_and_diagnose": true,
+      "no_draft_when_normal": true,
+      "drafts_cover_truth": true,
+      "claims_filed": false,
+      "n_tool_calls": 5,
+      "latency_s": 3.42,
+      "tokens": 4872
+    },
+    {
+      "cycle": 957,
+      "truth_severe": [
+        "pump_leak",
+        "valve"
+      ],
+      "baseline_alert": true,
+      "baseline_set": [
+        "pump_leak",
+        "valve"
+      ],
+      "baseline_alert_ok": true,
+      "baseline_set_ok": true,
+      "agent_error": null,
+      "agent_alert": true,
+      "agent_set": [
+        "pump_leak",
+        "valve"
+      ],
+      "agent_alert_ok": true,
+      "agent_set_ok": true,
+      "agent_vs_baseline_agree": true,
+      "called_score_and_diagnose": true,
+      "no_draft_when_normal": true,
+      "drafts_cover_truth": true,
+      "claims_filed": false,
+      "n_tool_calls": 6,
+      "latency_s": 3.34,
+      "tokens": 5216
+    },
+    {
+      "cycle": 9,
+      "truth_severe": [
+        "cooler"
+      ],
+      "baseline_alert": true,
+      "baseline_set": [
+        "cooler"
+      ],
+      "baseline_alert_ok": true,
+      "baseline_set_ok": true,
+      "agent_error": null,
+      "agent_alert": true,
+      "agent_set": [
+        "cooler"
+      ],
+      "agent_alert_ok": true,
+      "agent_set_ok": true,
+      "agent_vs_baseline_agree": true,
+      "called_score_and_diagnose": true,
+      "no_draft_when_normal": true,
+      "drafts_cover_truth": true,
+      "claims_filed": false,
+      "n_tool_calls": 5,
+      "latency_s": 3.54,
+      "tokens": 4919
+    },
+    {
+      "cycle": 635,
+      "truth_severe": [
+        "accumulator",
+        "cooler",
+        "pump_leak"
+      ],
+      "baseline_alert": true,
+      "baseline_set": [
+        "accumulator",
+        "cooler",
+        "pump_leak"
+      ],
+      "baseline_alert_ok": true,
+      "baseline_set_ok": true,
+      "agent_error": null,
+      "agent_alert": true,
+      "agent_set": [
+        "accumulator",
+        "cooler",
+        "pump_leak"
+      ],
+      "agent_alert_ok": true,
+      "agent_set_ok": true,
+      "agent_vs_baseline_agree": true,
+      "called_score_and_diagnose": true,
+      "no_draft_when_normal": true,
+      "drafts_cover_truth": true,
+      "claims_filed": false,
+      "n_tool_calls": 7,
+      "latency_s": 3.62,
+      "tokens": 5414
+    },
+    {
+      "cycle": 1824,
+      "truth_severe": [
+        "pump_leak",
+        "valve"
+      ],
+      "baseline_alert": true,
+      "baseline_set": [
+        "pump_leak",
+        "valve"
+      ],
+      "baseline_alert_ok": true,
+      "baseline_set_ok": true,
+      "agent_error": null,
+      "agent_alert": true,
+      "agent_set": [
+        "pump_leak",
+        "valve"
+      ],
+      "agent_alert_ok": true,
+      "agent_set_ok": true,
+      "agent_vs_baseline_agree": true,
+      "called_score_and_diagnose": true,
+      "no_draft_when_normal": true,
+      "drafts_cover_truth": true,
+      "claims_filed": false,
+      "n_tool_calls": 6,
+      "latency_s": 3.33,
+      "tokens": 5138
+    },
+    {
+      "cycle": 1129,
+      "truth_severe": [
+        "valve"
+      ],
+      "baseline_alert": true,
+      "baseline_set": [
+        "valve"
+      ],
+      "baseline_alert_ok": true,
+      "baseline_set_ok": true,
+      "agent_error": null,
+      "agent_alert": true,
+      "agent_set": [
+        "valve"
+      ],
+      "agent_alert_ok": true,
+      "agent_set_ok": true,
+      "agent_vs_baseline_agree": true,
+      "called_score_and_diagnose": true,
+      "no_draft_when_normal": true,
+      "drafts_cover_truth": true,
+      "claims_filed": false,
+      "n_tool_calls": 5,
+      "latency_s": 3.25,
+      "tokens": 4824
+    },
+    {
+      "cycle": 459,
+      "truth_severe": [
+        "cooler"
+      ],
+      "baseline_alert": true,
+      "baseline_set": [
+        "cooler"
+      ],
+      "baseline_alert_ok": true,
+      "baseline_set_ok": true,
+      "agent_error": null,
+      "agent_alert": true,
+      "agent_set": [
+        "cooler"
+      ],
+      "agent_alert_ok": true,
+      "agent_set_ok": true,
+      "agent_vs_baseline_agree": true,
+      "called_score_and_diagnose": true,
+      "no_draft_when_normal": true,
+      "drafts_cover_truth": true,
+      "claims_filed": false,
+      "n_tool_calls": 5,
+      "latency_s": 3.17,
+      "tokens": 4880
+    },
+    {
+      "cycle": 38,
+      "truth_severe": [
+        "cooler"
+      ],
+      "baseline_alert": true,
+      "baseline_set": [
+        "cooler"
+      ],
+      "baseline_alert_ok": true,
+      "baseline_set_ok": true,
+      "agent_error": null,
+      "agent_alert": true,
+      "agent_set": [
+        "cooler"
+      ],
+      "agent_alert_ok": true,
+      "agent_set_ok": true,
+      "agent_vs_baseline_agree": true,
+      "called_score_and_diagnose": true,
+      "no_draft_when_normal": true,
+      "drafts_cover_truth": true,
+      "claims_filed": false,
+      "n_tool_calls": 5,
+      "latency_s": 3.28,
+      "tokens": 4895
+    },
+    {
+      "cycle": 612,
+      "truth_severe": [
+        "accumulator",
+        "cooler",
+        "pump_leak",
+        "valve"
+      ],
+      "baseline_alert": true,
+      "baseline_set": [
+        "accumulator",
+        "cooler",
+        "pump_leak",
+        "valve"
+      ],
+      "baseline_alert_ok": true,
+      "baseline_set_ok": true,
+      "agent_error": null,
+      "agent_alert": true,
+      "agent_set": [
+        "accumulator",
+        "cooler",
+        "pump_leak",
+        "valve"
+      ],
+      "agent_alert_ok": true,
+      "agent_set_ok": true,
+      "agent_vs_baseline_agree": true,
+      "called_score_and_diagnose": true,
+      "no_draft_when_normal": true,
+      "drafts_cover_truth": true,
+      "claims_filed": false,
+      "n_tool_calls": 8,
+      "latency_s": 6.98,
+      "tokens": 5847
+    }
+  ]
+}
